@@ -1,14 +1,11 @@
 import json
 from aws_cdk import (
     aws_iam as iam,
-    custom_resources as cr,
-    aws_cloudformation as cfn,
     aws_lambda as lambda_,
     aws_s3 as s3,
     core,
 )
-import urllib3
-import boto3
+
 
 #s3_Properties
 
@@ -20,27 +17,7 @@ class S3Stack(core.Stack):
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
         """
-        try:
-            
-            #################################################
-            #
-            # Create IAM role for S3 bucket creation.
-            # 
-            #################################################
-            
-            
-            newRole = iam.Role(self, 'S3CustomRole',
-                            assumed_by=iam.ServicePrincipal("s3.amazonaws.com"),
-                            role_name='S3CustomRole'
-                            )
-            
-            [newRole.add_to_policy(iam.PolicyStatement(resources=[key],actions=[value])) for key, value in iam_role_properties.items()]
-        
-        except:
-            
-            print('[-] Failed to execute AWS custome resource for S3 bucket')
-            
-        """    
+
             
         #################################################
         #
@@ -65,6 +42,6 @@ class S3Stack(core.Stack):
             
             print('[-] Failed to execute AWS custome resource for S3 bucket')
             
-  cf_client = boto3.resource('cloudformation')
+
   
   
