@@ -15,16 +15,21 @@ class ssmRoleStack(core.Stack):
         super().__init__(scope, id, **kwargs)
 
 
-            #################################################
-            #
-            # Create IAM role for S3 bucket creation.
-            # 
-            #################################################
-            newRole = iam.Role(self, 'ssmCustomRole',
+    #################################################
+    #
+    # Create IAM role for S3 bucket creation.
+    # 
+    #################################################
+   
+    try:
+
+        newRole = iam.Role(self, 'ssmCustomRole',
                             assumed_by=iam.ServicePrincipal("ssm.amazonaws.com"),
                             role_name='ssmCustomRole'
                             )
-            [newRole.add_to_policy(iam.PolicyStatement(resources=[key],actions=[value])) for key, value in iam_role_properties.items()]
+       [newRole.add_to_policy(iam.PolicyStatement(resources=[key],actions=[value])) for key, value in iam_role_properties.items()]
         
-        except:
-            print('[-] Failed to execute AWS custome resource for S3 bucket')
+   except:
+            
+
+    print('[-] Failed to execute AWS custome resource for S3 bucket')
