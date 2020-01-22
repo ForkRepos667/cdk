@@ -4,7 +4,6 @@ from aws_cdk import (
     core,
 )
 
-
 iam_role_properties={'':''}
 
 class SsmRoleStack(core.Stack):
@@ -27,6 +26,6 @@ class SsmRoleStack(core.Stack):
         
         except:
             
-            print('[-] Failed to execute AWS custome resource for S3 bucket')
+            print('[-] Failed to create new role')
             
  
