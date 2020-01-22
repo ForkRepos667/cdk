@@ -16,7 +16,8 @@ class SsmRoleStack(core.Stack):
     # Create IAM role for ssm patching
     # 
     #################################################
-            
+        
+        try: 
             newRole = iam.Role(self, 'ssmCustomRole',
                             assumed_by=iam.ServicePrincipal("s3.amazonaws.com"),
                             role_name='ssmCustomRole'
