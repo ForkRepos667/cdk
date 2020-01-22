@@ -293,5 +293,15 @@
         "aws:cdk:path": "endpoint/VPC/SSMM/Resource"
       }
     }
+  },
+  "Outputs": {
+    "ResponseMessage01": {
+      "Description": "Public Subnets",
+      "Value": "subnet-06e743b2d47556e8a"
+    },
+    "ResponseMessage02": {
+      "Description": "Private Subnets",
+      "Value": "subnet-08bfe6d01603857dc"
+    }
   }
 }

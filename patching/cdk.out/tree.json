@@ -381,6 +381,14 @@
                 }
               }
             }
+          },
+          "ResponseMessage01": {
+            "id": "ResponseMessage01",
+            "path": "endpoint/ResponseMessage01"
+          },
+          "ResponseMessage02": {
+            "id": "ResponseMessage02",
+            "path": "endpoint/ResponseMessage02"
           }
         }
       },

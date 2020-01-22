@@ -89,7 +89,6 @@ class PatchingEndpointStack(core.Stack):
 
             try:
                 
-                #print('[+] Setting up GW Endpoint ' + str(endpoint))
                 
                 s3_endpoint = vpc.add_gateway_endpoint(endpoint, service=endpoint_gw[endpoint])
                 
@@ -122,3 +121,23 @@ class PatchingEndpointStack(core.Stack):
             except AssertionError as error:
                 print(error)
                 print('[-] Error creating Interface Endpoint')
+
+
+        
+        
+         # Publish the custom resource output
+        
+        
+        core.CfnOutput(
+            self, "ResponseMessage01",
+            description="Public Subnets",
+            value=vpc.public_subnets[0].subnet_id
+        )
+        
+
+        core.CfnOutput(
+            self, "ResponseMessage02",
+            description="Private Subnets",
+            value=vpc.private_subnets[0].subnet_id
+        )
+        
