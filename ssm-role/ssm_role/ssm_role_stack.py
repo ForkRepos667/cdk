@@ -6,24 +6,25 @@ from aws_cdk import (
 )
 
 
+iam_role_properties={'':'',}
+
+
 class ssmRoleStack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        # The code that defines your stack goes here
 
-        ec2_endpoint = ec2.VpcEndpoint(self, 
-                                        id="ssm-endpoint",
-                                        VpcEndpointType='Interface',
-                                        VpcId='string',
-                                        ServiceName='string',
-                                        PolicyDocument='string',
-                                        RouteTableIds=['string',],
-                                        SubnetIds=['string',],
-                                        SecurityGroupIds=['string',],
-                                        ClientToken='string',
-                                        PrivateDnsEnabled=True
-                                        )
-                                       
-    
+            #################################################
+            #
+            # Create IAM role for S3 bucket creation.
+            # 
+            #################################################
+            newRole = iam.Role(self, 'ssmCustomRole',
+                            assumed_by=iam.ServicePrincipal("ssm.amazonaws.com"),
+                            role_name='ssmCustomRole'
+                            )
+            [newRole.add_to_policy(iam.PolicyStatement(resources=[key],actions=[value])) for key, value in iam_role_properties.items()]
+        
+        except:
+            print('[-] Failed to execute AWS custome resource for S3 bucket')
