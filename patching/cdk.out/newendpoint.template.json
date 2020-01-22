@@ -98,7 +98,13 @@
     "sandboxssmpublicsubnetSubnet1EIP11E6A10D": {
       "Type": "AWS::EC2::EIP",
       "Properties": {
-        "Domain": "vpc"
+        "Domain": "vpc",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox/ssm-public-subnetSubnet1"
+          }
+        ]
       },
       "Metadata": {
         "aws:cdk:path": "newendpoint/sandbox/ssm-public-subnetSubnet1/EIP"
@@ -271,6 +277,32 @@
         ],
         "SecurityGroupIngress": [
           {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "sandbox0EE381FB",
+                "CidrBlock"
+              ]
+            },
+            "Description": {
+              "Fn::Join": [
+                "",
+                [
+                  "from ",
+                  {
+                    "Fn::GetAtt": [
+                      "sandbox0EE381FB",
+                      "CidrBlock"
+                    ]
+                  },
+                  ":443"
+                ]
+              ]
+            },
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
+          {
             "CidrIp": "0.0.0.0/0",
             "Description": "from 0.0.0.0/0:443",
             "FromPort": 443,
@@ -342,6 +374,32 @@
           }
         ],
         "SecurityGroupIngress": [
+          {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "sandbox0EE381FB",
+                "CidrBlock"
+              ]
+            },
+            "Description": {
+              "Fn::Join": [
+                "",
+                [
+                  "from ",
+                  {
+                    "Fn::GetAtt": [
+                      "sandbox0EE381FB",
+                      "CidrBlock"
+                    ]
+                  },
+                  ":443"
+                ]
+              ]
+            },
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
           {
             "CidrIp": "0.0.0.0/0",
             "Description": "from 0.0.0.0/0:443",
@@ -415,6 +473,32 @@
         ],
         "SecurityGroupIngress": [
           {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "sandbox0EE381FB",
+                "CidrBlock"
+              ]
+            },
+            "Description": {
+              "Fn::Join": [
+                "",
+                [
+                  "from ",
+                  {
+                    "Fn::GetAtt": [
+                      "sandbox0EE381FB",
+                      "CidrBlock"
+                    ]
+                  },
+                  ":443"
+                ]
+              ]
+            },
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
+          {
             "CidrIp": "0.0.0.0/0",
             "Description": "from 0.0.0.0/0:443",
             "FromPort": 443,
@@ -486,6 +570,32 @@
           }
         ],
         "SecurityGroupIngress": [
+          {
+            "CidrIp": {
+              "Fn::GetAtt": [
+                "sandbox0EE381FB",
+                "CidrBlock"
+              ]
+            },
+            "Description": {
+              "Fn::Join": [
+                "",
+                [
+                  "from ",
+                  {
+                    "Fn::GetAtt": [
+                      "sandbox0EE381FB",
+                      "CidrBlock"
+                    ]
+                  },
+                  ":443"
+                ]
+              ]
+            },
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
           {
             "CidrIp": "0.0.0.0/0",
             "Description": "from 0.0.0.0/0:443",

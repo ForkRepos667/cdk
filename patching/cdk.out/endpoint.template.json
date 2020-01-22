@@ -15,9 +15,9 @@
             ]
           ]
         },
-        "VpcId": "vpc-09f6ed2588eba06a1",
+        "VpcId": "vpc-0406e4fcf26927baf",
         "RouteTableIds": [
-          "rtb-0cfb6852f3559d5e8"
+          "rtb-08801ca29bd0c4619"
         ],
         "VpcEndpointType": "Gateway"
       },
@@ -38,6 +38,13 @@
         ],
         "SecurityGroupIngress": [
           {
+            "CidrIp": "10.10.0.0/21",
+            "Description": "from 10.10.0.0/21:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
+          {
             "CidrIp": "0.0.0.0/0",
             "Description": "from 0.0.0.0/0:443",
             "FromPort": 443,
@@ -45,7 +52,7 @@
             "ToPort": 443
           }
         ],
-        "VpcId": "vpc-09f6ed2588eba06a1"
+        "VpcId": "vpc-0406e4fcf26927baf"
       },
       "Metadata": {
         "aws:cdk:path": "endpoint/VPC/E_C2_MESSAGES/SecurityGroup/Resource"
@@ -66,7 +73,7 @@
             ]
           ]
         },
-        "VpcId": "vpc-09f6ed2588eba06a1",
+        "VpcId": "vpc-0406e4fcf26927baf",
         "PrivateDnsEnabled": true,
         "SecurityGroupIds": [
           {
@@ -77,7 +84,7 @@
           }
         ],
         "SubnetIds": [
-          "subnet-007f6d747e384b55d"
+          "subnet-08bfe6d01603857dc"
         ],
         "VpcEndpointType": "Interface"
       },
@@ -98,6 +105,13 @@
         ],
         "SecurityGroupIngress": [
           {
+            "CidrIp": "10.10.0.0/21",
+            "Description": "from 10.10.0.0/21:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
+          {
             "CidrIp": "0.0.0.0/0",
             "Description": "from 0.0.0.0/0:443",
             "FromPort": 443,
@@ -105,7 +119,7 @@
             "ToPort": 443
           }
         ],
-        "VpcId": "vpc-09f6ed2588eba06a1"
+        "VpcId": "vpc-0406e4fcf26927baf"
       },
       "Metadata": {
         "aws:cdk:path": "endpoint/VPC/E_C2/SecurityGroup/Resource"
@@ -126,7 +140,7 @@
             ]
           ]
         },
-        "VpcId": "vpc-09f6ed2588eba06a1",
+        "VpcId": "vpc-0406e4fcf26927baf",
         "PrivateDnsEnabled": true,
         "SecurityGroupIds": [
           {
@@ -137,7 +151,7 @@
           }
         ],
         "SubnetIds": [
-          "subnet-007f6d747e384b55d"
+          "subnet-08bfe6d01603857dc"
         ],
         "VpcEndpointType": "Interface"
       },
@@ -158,6 +172,13 @@
         ],
         "SecurityGroupIngress": [
           {
+            "CidrIp": "10.10.0.0/21",
+            "Description": "from 10.10.0.0/21:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
+          {
             "CidrIp": "0.0.0.0/0",
             "Description": "from 0.0.0.0/0:443",
             "FromPort": 443,
@@ -165,7 +186,7 @@
             "ToPort": 443
           }
         ],
-        "VpcId": "vpc-09f6ed2588eba06a1"
+        "VpcId": "vpc-0406e4fcf26927baf"
       },
       "Metadata": {
         "aws:cdk:path": "endpoint/VPC/SSM/SecurityGroup/Resource"
@@ -186,7 +207,7 @@
             ]
           ]
         },
-        "VpcId": "vpc-09f6ed2588eba06a1",
+        "VpcId": "vpc-0406e4fcf26927baf",
         "PrivateDnsEnabled": true,
         "SecurityGroupIds": [
           {
@@ -197,7 +218,7 @@
           }
         ],
         "SubnetIds": [
-          "subnet-007f6d747e384b55d"
+          "subnet-08bfe6d01603857dc"
         ],
         "VpcEndpointType": "Interface"
       },
@@ -218,6 +239,13 @@
         ],
         "SecurityGroupIngress": [
           {
+            "CidrIp": "10.10.0.0/21",
+            "Description": "from 10.10.0.0/21:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
+          {
             "CidrIp": "0.0.0.0/0",
             "Description": "from 0.0.0.0/0:443",
             "FromPort": 443,
@@ -225,7 +253,7 @@
             "ToPort": 443
           }
         ],
-        "VpcId": "vpc-09f6ed2588eba06a1"
+        "VpcId": "vpc-0406e4fcf26927baf"
       },
       "Metadata": {
         "aws:cdk:path": "endpoint/VPC/SSMM/SecurityGroup/Resource"
@@ -246,7 +274,7 @@
             ]
           ]
         },
-        "VpcId": "vpc-09f6ed2588eba06a1",
+        "VpcId": "vpc-0406e4fcf26927baf",
         "PrivateDnsEnabled": true,
         "SecurityGroupIds": [
           {
@@ -257,7 +285,7 @@
           }
         ],
         "SubnetIds": [
-          "subnet-007f6d747e384b55d"
+          "subnet-08bfe6d01603857dc"
         ],
         "VpcEndpointType": "Interface"
       },

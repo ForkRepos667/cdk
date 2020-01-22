@@ -18,7 +18,7 @@ from aws_cdk import (
 # Variables
 #
 ####################################################
-vpcname='Sandbox'
+vpcname='newendpoint/sandbox'
 endpoint_gw = {'S3':ec2.GatewayVpcEndpointAwsService.S3 }
 endpoint_if = {'E_C2_MESSAGES':ec2.InterfaceVpcEndpointAwsService.E_C2_MESSAGES, 
                'E_C2':ec2.InterfaceVpcEndpointAwsService.E_C2, 
@@ -41,7 +41,7 @@ class PatchingEndpointStack(core.Stack):
         #################################################
         
         try:
-                
+            
             # VPC lookup
             vpc = ec2.Vpc.from_lookup(self, "VPC", vpc_name=vpcname, is_default=False)
               
@@ -114,6 +114,7 @@ class PatchingEndpointStack(core.Stack):
                 #print('[+] Setting up Interface Endpoint: ' + str(endpoint))
                 
                 if_endpoint = vpc.add_interface_endpoint(endpoint, service=endpoint_if[endpoint])
+    
                 
                 # Add SG
                 if_endpoint.connections.allow_default_port_from_any_ipv4()

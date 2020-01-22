@@ -16,9 +16,13 @@
             "id": "VPC",
             "path": "endpoint/VPC",
             "children": {
-              "PrivateSubnet1": {
-                "id": "PrivateSubnet1",
-                "path": "endpoint/VPC/PrivateSubnet1"
+              "ssm-public-subnetSubnet1": {
+                "id": "ssm-public-subnetSubnet1",
+                "path": "endpoint/VPC/ssm-public-subnetSubnet1"
+              },
+              "ssm-private-subnetSubnet1": {
+                "id": "ssm-private-subnetSubnet1",
+                "path": "endpoint/VPC/ssm-private-subnetSubnet1"
               },
               "S3": {
                 "id": "S3",
@@ -42,9 +46,9 @@
                             ]
                           ]
                         },
-                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "vpcId": "vpc-0406e4fcf26927baf",
                         "routeTableIds": [
-                          "rtb-0cfb6852f3559d5e8"
+                          "rtb-08801ca29bd0c4619"
                         ],
                         "vpcEndpointType": "Gateway"
                       }
@@ -76,6 +80,13 @@
                             ],
                             "securityGroupIngress": [
                               {
+                                "cidrIp": "10.10.0.0/21",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 10.10.0.0/21:443"
+                              },
+                              {
                                 "cidrIp": "0.0.0.0/0",
                                 "ipProtocol": "tcp",
                                 "fromPort": 443,
@@ -83,7 +94,7 @@
                                 "description": "from 0.0.0.0/0:443"
                               }
                             ],
-                            "vpcId": "vpc-09f6ed2588eba06a1"
+                            "vpcId": "vpc-0406e4fcf26927baf"
                           }
                         }
                       }
@@ -107,7 +118,7 @@
                             ]
                           ]
                         },
-                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "vpcId": "vpc-0406e4fcf26927baf",
                         "privateDnsEnabled": true,
                         "securityGroupIds": [
                           {
@@ -118,7 +129,7 @@
                           }
                         ],
                         "subnetIds": [
-                          "subnet-007f6d747e384b55d"
+                          "subnet-08bfe6d01603857dc"
                         ],
                         "vpcEndpointType": "Interface"
                       }
@@ -150,6 +161,13 @@
                             ],
                             "securityGroupIngress": [
                               {
+                                "cidrIp": "10.10.0.0/21",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 10.10.0.0/21:443"
+                              },
+                              {
                                 "cidrIp": "0.0.0.0/0",
                                 "ipProtocol": "tcp",
                                 "fromPort": 443,
@@ -157,7 +175,7 @@
                                 "description": "from 0.0.0.0/0:443"
                               }
                             ],
-                            "vpcId": "vpc-09f6ed2588eba06a1"
+                            "vpcId": "vpc-0406e4fcf26927baf"
                           }
                         }
                       }
@@ -181,7 +199,7 @@
                             ]
                           ]
                         },
-                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "vpcId": "vpc-0406e4fcf26927baf",
                         "privateDnsEnabled": true,
                         "securityGroupIds": [
                           {
@@ -192,7 +210,7 @@
                           }
                         ],
                         "subnetIds": [
-                          "subnet-007f6d747e384b55d"
+                          "subnet-08bfe6d01603857dc"
                         ],
                         "vpcEndpointType": "Interface"
                       }
@@ -224,6 +242,13 @@
                             ],
                             "securityGroupIngress": [
                               {
+                                "cidrIp": "10.10.0.0/21",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 10.10.0.0/21:443"
+                              },
+                              {
                                 "cidrIp": "0.0.0.0/0",
                                 "ipProtocol": "tcp",
                                 "fromPort": 443,
@@ -231,7 +256,7 @@
                                 "description": "from 0.0.0.0/0:443"
                               }
                             ],
-                            "vpcId": "vpc-09f6ed2588eba06a1"
+                            "vpcId": "vpc-0406e4fcf26927baf"
                           }
                         }
                       }
@@ -255,7 +280,7 @@
                             ]
                           ]
                         },
-                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "vpcId": "vpc-0406e4fcf26927baf",
                         "privateDnsEnabled": true,
                         "securityGroupIds": [
                           {
@@ -266,7 +291,7 @@
                           }
                         ],
                         "subnetIds": [
-                          "subnet-007f6d747e384b55d"
+                          "subnet-08bfe6d01603857dc"
                         ],
                         "vpcEndpointType": "Interface"
                       }
@@ -298,6 +323,13 @@
                             ],
                             "securityGroupIngress": [
                               {
+                                "cidrIp": "10.10.0.0/21",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 10.10.0.0/21:443"
+                              },
+                              {
                                 "cidrIp": "0.0.0.0/0",
                                 "ipProtocol": "tcp",
                                 "fromPort": 443,
@@ -305,7 +337,7 @@
                                 "description": "from 0.0.0.0/0:443"
                               }
                             ],
-                            "vpcId": "vpc-09f6ed2588eba06a1"
+                            "vpcId": "vpc-0406e4fcf26927baf"
                           }
                         }
                       }
@@ -329,7 +361,7 @@
                             ]
                           ]
                         },
-                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "vpcId": "vpc-0406e4fcf26927baf",
                         "privateDnsEnabled": true,
                         "securityGroupIds": [
                           {
@@ -340,7 +372,7 @@
                           }
                         ],
                         "subnetIds": [
-                          "subnet-007f6d747e384b55d"
+                          "subnet-08bfe6d01603857dc"
                         ],
                         "vpcEndpointType": "Interface"
                       }
@@ -471,7 +503,13 @@
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
                       "aws:cdk:cloudformation:props": {
-                        "domain": "vpc"
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "newendpoint/sandbox/ssm-public-subnetSubnet1"
+                          }
+                        ]
                       }
                     }
                   },
@@ -679,6 +717,32 @@
                             ],
                             "securityGroupIngress": [
                               {
+                                "cidrIp": {
+                                  "Fn::GetAtt": [
+                                    "sandbox0EE381FB",
+                                    "CidrBlock"
+                                  ]
+                                },
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "from ",
+                                      {
+                                        "Fn::GetAtt": [
+                                          "sandbox0EE381FB",
+                                          "CidrBlock"
+                                        ]
+                                      },
+                                      ":443"
+                                    ]
+                                  ]
+                                }
+                              },
+                              {
                                 "cidrIp": "0.0.0.0/0",
                                 "ipProtocol": "tcp",
                                 "fromPort": 443,
@@ -764,6 +828,32 @@
                               }
                             ],
                             "securityGroupIngress": [
+                              {
+                                "cidrIp": {
+                                  "Fn::GetAtt": [
+                                    "sandbox0EE381FB",
+                                    "CidrBlock"
+                                  ]
+                                },
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "from ",
+                                      {
+                                        "Fn::GetAtt": [
+                                          "sandbox0EE381FB",
+                                          "CidrBlock"
+                                        ]
+                                      },
+                                      ":443"
+                                    ]
+                                  ]
+                                }
+                              },
                               {
                                 "cidrIp": "0.0.0.0/0",
                                 "ipProtocol": "tcp",
@@ -851,6 +941,32 @@
                             ],
                             "securityGroupIngress": [
                               {
+                                "cidrIp": {
+                                  "Fn::GetAtt": [
+                                    "sandbox0EE381FB",
+                                    "CidrBlock"
+                                  ]
+                                },
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "from ",
+                                      {
+                                        "Fn::GetAtt": [
+                                          "sandbox0EE381FB",
+                                          "CidrBlock"
+                                        ]
+                                      },
+                                      ":443"
+                                    ]
+                                  ]
+                                }
+                              },
+                              {
                                 "cidrIp": "0.0.0.0/0",
                                 "ipProtocol": "tcp",
                                 "fromPort": 443,
@@ -936,6 +1052,32 @@
                               }
                             ],
                             "securityGroupIngress": [
+                              {
+                                "cidrIp": {
+                                  "Fn::GetAtt": [
+                                    "sandbox0EE381FB",
+                                    "CidrBlock"
+                                  ]
+                                },
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "from ",
+                                      {
+                                        "Fn::GetAtt": [
+                                          "sandbox0EE381FB",
+                                          "CidrBlock"
+                                        ]
+                                      },
+                                      ":443"
+                                    ]
+                                  ]
+                                }
+                              },
                               {
                                 "cidrIp": "0.0.0.0/0",
                                 "ipProtocol": "tcp",

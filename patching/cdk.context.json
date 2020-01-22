@@ -38,5 +38,48 @@
     "eu-west-2a",
     "eu-west-2b",
     "eu-west-2c"
-  ]
+  ],
+  "vpc-provider:account=847208056990:filter.vpc-id=vpc-01d4286e035bfc5d8:region=eu-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-01d4286e035bfc5d8",
+    "vpcCidrBlock": "10.10.1.0/24",
+    "availabilityZones": [],
+    "subnetGroups": []
+  },
+  "vpc-provider:account=847208056990:filter.isDefault=false:filter.vpc-id=vpc-01d4286e035bfc5d8:region=eu-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-01d4286e035bfc5d8",
+    "vpcCidrBlock": "10.10.1.0/24",
+    "availabilityZones": [],
+    "subnetGroups": []
+  },
+  "vpc-provider:account=847208056990:filter.isDefault=false:filter.tag:Name=newendpoint/sandbox:region=eu-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0406e4fcf26927baf",
+    "vpcCidrBlock": "10.10.0.0/21",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "ssm-private-subnet",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-08bfe6d01603857dc",
+            "cidr": "10.10.0.64/26",
+            "availabilityZone": "eu-west-2a",
+            "routeTableId": "rtb-08801ca29bd0c4619"
+          }
+        ]
+      },
+      {
+        "name": "ssm-public-subnet",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-06e743b2d47556e8a",
+            "cidr": "10.10.0.0/26",
+            "availabilityZone": "eu-west-2a",
+            "routeTableId": "rtb-01ca95408c4d7ec8e"
+          }
+        ]
+      }
+    ]
+  }
 }
