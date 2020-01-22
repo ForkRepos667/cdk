@@ -1,0 +1,15 @@
+{
+  "Resources": {
+    "s3custom": {
+      "Type": "AWS::CloudFormation::CustomResource",
+      "Properties": {
+        "ServiceToken": "arn:aws:lambda:eu-west-2:847208056990:function:s3_custom_function",
+        "bktname": "philbucket2",
+        "loc": "eu-west-2"
+      },
+      "Metadata": {
+        "aws:cdk:path": "s3/s3_custom"
+      }
+    }
+  }
+}

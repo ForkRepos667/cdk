@@ -1,0 +1,7 @@
+aws-cdk.core
+aws-cdk.aws-s3
+aws-cdk.aws-cloudformation
+aws-cdk.aws-lambda
+aws_cdk.custom_resources
+crhelper
+boto3
