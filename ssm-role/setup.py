@@ -6,7 +6,7 @@ with open("README.md") as fp:
 
 
 setuptools.setup(
-    name="ssm_endpoints",
+    name="ssm_role",
     version="0.0.1",
 
     description="An empty CDK Python app",
@@ -15,8 +15,8 @@ setuptools.setup(
 
     author="author",
 
-    package_dir={"": "ssm_endpoints"},
-    packages=setuptools.find_packages(where="ssm_endpoints"),
+    package_dir={"": "ssm_role"},
+    packages=setuptools.find_packages(where="ssm_role"),
 
     install_requires=[
         "aws-cdk.core",

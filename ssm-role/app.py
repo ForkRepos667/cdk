@@ -2,10 +2,10 @@
 
 from aws_cdk import core
 
-from ssm_role.ssm_role_stack import ssmRoleStack
+from ssm_role.ssm_role_stack import SsmRoleStack
 
 
 app = core.App()
-ssmRoleStack(app, "ssm-role")
+SsmRoleStack(app, "ssm-role")
 
 app.synth()
