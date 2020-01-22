@@ -1,0 +1,269 @@
+{
+  "Resources": {
+    "VPCS3CC6C5EE4": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".s3"
+            ]
+          ]
+        },
+        "VpcId": "vpc-09f6ed2588eba06a1",
+        "RouteTableIds": [
+          "rtb-0cfb6852f3559d5e8"
+        ],
+        "VpcEndpointType": "Gateway"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/S3/Resource"
+      }
+    },
+    "VPCEC2MESSAGESSecurityGroup8A0BB69D": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "endpoint/VPC/E_C2_MESSAGES/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "VpcId": "vpc-09f6ed2588eba06a1"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/E_C2_MESSAGES/SecurityGroup/Resource"
+      }
+    },
+    "VPCEC2MESSAGESEE96C6E7": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".ec2messages"
+            ]
+          ]
+        },
+        "VpcId": "vpc-09f6ed2588eba06a1",
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "VPCEC2MESSAGESSecurityGroup8A0BB69D",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          "subnet-007f6d747e384b55d"
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/E_C2_MESSAGES/Resource"
+      }
+    },
+    "VPCEC2SecurityGroup2A843CC4": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "endpoint/VPC/E_C2/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "VpcId": "vpc-09f6ed2588eba06a1"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/E_C2/SecurityGroup/Resource"
+      }
+    },
+    "VPCEC25EC30D12": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".ec2"
+            ]
+          ]
+        },
+        "VpcId": "vpc-09f6ed2588eba06a1",
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "VPCEC2SecurityGroup2A843CC4",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          "subnet-007f6d747e384b55d"
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/E_C2/Resource"
+      }
+    },
+    "VPCSSMSecurityGroupDBEF74F2": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "endpoint/VPC/SSM/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "VpcId": "vpc-09f6ed2588eba06a1"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/SSM/SecurityGroup/Resource"
+      }
+    },
+    "VPCSSM6B96B4FD": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".ssm"
+            ]
+          ]
+        },
+        "VpcId": "vpc-09f6ed2588eba06a1",
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "VPCSSMSecurityGroupDBEF74F2",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          "subnet-007f6d747e384b55d"
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/SSM/Resource"
+      }
+    },
+    "VPCSSMMSecurityGroupA7C66A28": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "endpoint/VPC/SSMM/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "VpcId": "vpc-09f6ed2588eba06a1"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/SSMM/SecurityGroup/Resource"
+      }
+    },
+    "VPCSSMMD918063A": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".ssmmessages"
+            ]
+          ]
+        },
+        "VpcId": "vpc-09f6ed2588eba06a1",
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "VPCSSMMSecurityGroupA7C66A28",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          "subnet-007f6d747e384b55d"
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "endpoint/VPC/SSMM/Resource"
+      }
+    }
+  }
+}

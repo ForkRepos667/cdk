@@ -1,0 +1,42 @@
+{
+  "@aws-cdk/core:enableStackNameDuplicates": "true",
+  "vpc-provider:account=847208056990:filter.isDefault=false:filter.tag:Name=Sandbox:filter.vpc-id=vpc-09f6ed2588eba06a1:region=eu-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-09f6ed2588eba06a1",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-007f6d747e384b55d",
+            "availabilityZone": "eu-west-2a",
+            "routeTableId": "rtb-0cfb6852f3559d5e8"
+          }
+        ]
+      }
+    ]
+  },
+  "vpc-provider:account=847208056990:filter.isDefault=false:filter.tag:Name=Sandbox:region=eu-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-09f6ed2588eba06a1",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-007f6d747e384b55d",
+            "availabilityZone": "eu-west-2a",
+            "routeTableId": "rtb-0cfb6852f3559d5e8"
+          }
+        ]
+      }
+    ]
+  },
+  "availability-zones:account=847208056990:region=eu-west-2": [
+    "eu-west-2a",
+    "eu-west-2b",
+    "eu-west-2c"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "Resources": {
+    "WindondsMaintwindow": {
+      "Type": "AWS::SSM::MaintenanceWindow",
+      "Properties": {
+        "AllowUnassociatedTargets": true,
+        "Cutoff": 1,
+        "Duration": 2,
+        "Name": "Windows-Maintainance-Window",
+        "Schedule": "cron(0/30 * * * ? *)",
+        "Description": "Windows Maintainance Window"
+      },
+      "Metadata": {
+        "aws:cdk:path": "patching/WindondsMaintwindow"
+      }
+    },
+    "LinuxMaintwindow": {
+      "Type": "AWS::SSM::MaintenanceWindow",
+      "Properties": {
+        "AllowUnassociatedTargets": true,
+        "Cutoff": 1,
+        "Duration": 2,
+        "Name": "Linux-Maintainance-Window",
+        "Schedule": "cron(0/30 * * * ? *)",
+        "Description": "Linux Maintainance Window"
+      },
+      "Metadata": {
+        "aws:cdk:path": "patching/LinuxMaintwindow"
+      }
+    },
+    "WinMaintTarget": {
+      "Type": "AWS::SSM::MaintenanceWindowTarget",
+      "Properties": {
+        "ResourceType": "INSTANCE",
+        "Targets": [
+          {
+            "Key": "tag:Patchgroup",
+            "Values": [
+              "Windows"
+            ]
+          }
+        ],
+        "WindowId": {
+          "Ref": "WindondsMaintwindow"
+        },
+        "Name": "Windows-Target"
+      },
+      "Metadata": {
+        "aws:cdk:path": "patching/WinMaintTarget"
+      }
+    },
+    "LinuxMaintTarget": {
+      "Type": "AWS::SSM::MaintenanceWindowTarget",
+      "Properties": {
+        "ResourceType": "INSTANCE",
+        "Targets": [
+          {
+            "Key": "tag:Patchgroup",
+            "Values": [
+              "Linux"
+            ]
+          }
+        ],
+        "WindowId": {
+          "Ref": "LinuxMaintwindow"
+        },
+        "Name": "Linux-Target"
+      },
+      "Metadata": {
+        "aws:cdk:path": "patching/LinuxMaintTarget"
+      }
+    },
+    "WinMaintTask": {
+      "Type": "AWS::SSM::MaintenanceWindowTask",
+      "Properties": {
+        "MaxConcurrency": "2",
+        "MaxErrors": "2",
+        "Priority": 1,
+        "Targets": [
+          {
+            "Key": "WindowTargetIds",
+            "Values": [
+              {
+                "Ref": "WinMaintTarget"
+              }
+            ]
+          }
+        ],
+        "TaskArn": "AWS-RunPatchBaseline",
+        "TaskType": "RUN_COMMAND",
+        "WindowId": {
+          "Ref": "WindondsMaintwindow"
+        },
+        "Name": "Windows-Task",
+        "ServiceRoleArn": "arn:aws:iam::847208056990:role/SSM-Pathcing-Role",
+        "TaskInvocationParameters": {
+          "MaintenanceWindowRunCommandParameters": {
+            "OutputS3BucketName": "patchingsandbox",
+            "Parameters": {
+              "Operation": [
+                "Scan"
+              ]
+            }
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "patching/WinMaintTask"
+      }
+    },
+    "LinuxMaintTask": {
+      "Type": "AWS::SSM::MaintenanceWindowTask",
+      "Properties": {
+        "MaxConcurrency": "2",
+        "MaxErrors": "2",
+        "Priority": 1,
+        "Targets": [
+          {
+            "Key": "WindowTargetIds",
+            "Values": [
+              {
+                "Ref": "LinuxMaintTarget"
+              }
+            ]
+          }
+        ],
+        "TaskArn": "AWS-RunPatchBaseline",
+        "TaskType": "RUN_COMMAND",
+        "WindowId": {
+          "Ref": "LinuxMaintwindow"
+        },
+        "Name": "Linux-Task",
+        "ServiceRoleArn": "arn:aws:iam::847208056990:role/SSM-Pathcing-Role",
+        "TaskInvocationParameters": {
+          "MaintenanceWindowRunCommandParameters": {
+            "OutputS3BucketName": "patchingsandbox",
+            "Parameters": {
+              "Operation": [
+                "Scan"
+              ]
+            }
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "patching/LinuxMaintTask"
+      }
+    }
+  },
+  "Outputs": {
+    "ResponseMessage02": {
+      "Description": "Linux Maintenance Window ID",
+      "Value": {
+        "Ref": "LinuxMaintwindow"
+      }
+    },
+    "ResponseMessage03": {
+      "Description": "Windows Maintenance Window ID",
+      "Value": {
+        "Ref": "WindondsMaintwindow"
+      }
+    }
+  }
+}

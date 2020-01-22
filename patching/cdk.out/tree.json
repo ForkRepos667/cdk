@@ -1,0 +1,1174 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree"
+      },
+      "endpoint": {
+        "id": "endpoint",
+        "path": "endpoint",
+        "children": {
+          "VPC": {
+            "id": "VPC",
+            "path": "endpoint/VPC",
+            "children": {
+              "PrivateSubnet1": {
+                "id": "PrivateSubnet1",
+                "path": "endpoint/VPC/PrivateSubnet1"
+              },
+              "S3": {
+                "id": "S3",
+                "path": "endpoint/VPC/S3",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "endpoint/VPC/S3/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".s3"
+                            ]
+                          ]
+                        },
+                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "routeTableIds": [
+                          "rtb-0cfb6852f3559d5e8"
+                        ],
+                        "vpcEndpointType": "Gateway"
+                      }
+                    }
+                  }
+                }
+              },
+              "E_C2_MESSAGES": {
+                "id": "E_C2_MESSAGES",
+                "path": "endpoint/VPC/E_C2_MESSAGES",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "endpoint/VPC/E_C2_MESSAGES/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "endpoint/VPC/E_C2_MESSAGES/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "endpoint/VPC/E_C2_MESSAGES/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "vpcId": "vpc-09f6ed2588eba06a1"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "endpoint/VPC/E_C2_MESSAGES/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ec2messages"
+                            ]
+                          ]
+                        },
+                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "VPCEC2MESSAGESSecurityGroup8A0BB69D",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          "subnet-007f6d747e384b55d"
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              },
+              "E_C2": {
+                "id": "E_C2",
+                "path": "endpoint/VPC/E_C2",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "endpoint/VPC/E_C2/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "endpoint/VPC/E_C2/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "endpoint/VPC/E_C2/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "vpcId": "vpc-09f6ed2588eba06a1"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "endpoint/VPC/E_C2/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ec2"
+                            ]
+                          ]
+                        },
+                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "VPCEC2SecurityGroup2A843CC4",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          "subnet-007f6d747e384b55d"
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              },
+              "SSM": {
+                "id": "SSM",
+                "path": "endpoint/VPC/SSM",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "endpoint/VPC/SSM/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "endpoint/VPC/SSM/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "endpoint/VPC/SSM/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "vpcId": "vpc-09f6ed2588eba06a1"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "endpoint/VPC/SSM/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ssm"
+                            ]
+                          ]
+                        },
+                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "VPCSSMSecurityGroupDBEF74F2",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          "subnet-007f6d747e384b55d"
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              },
+              "SSMM": {
+                "id": "SSMM",
+                "path": "endpoint/VPC/SSMM",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "endpoint/VPC/SSMM/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "endpoint/VPC/SSMM/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "endpoint/VPC/SSMM/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "vpcId": "vpc-09f6ed2588eba06a1"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "endpoint/VPC/SSMM/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ssmmessages"
+                            ]
+                          ]
+                        },
+                        "vpcId": "vpc-09f6ed2588eba06a1",
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "VPCSSMMSecurityGroupA7C66A28",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          "subnet-007f6d747e384b55d"
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "newendpoint": {
+        "id": "newendpoint",
+        "path": "newendpoint",
+        "children": {
+          "sandbox": {
+            "id": "sandbox",
+            "path": "newendpoint/sandbox",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "newendpoint/sandbox/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
+                  "aws:cdk:cloudformation:props": {
+                    "cidrBlock": "10.10.0.0/21",
+                    "enableDnsHostnames": true,
+                    "enableDnsSupport": true,
+                    "instanceTenancy": "default",
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "newendpoint/sandbox"
+                      }
+                    ]
+                  }
+                }
+              },
+              "ssm-public-subnetSubnet1": {
+                "id": "ssm-public-subnetSubnet1",
+                "path": "newendpoint/sandbox/ssm-public-subnetSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "newendpoint/sandbox/ssm-public-subnetSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.10.0.0/26",
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "availabilityZone": "eu-west-2a",
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "newendpoint/sandbox/ssm-public-subnetSubnet1"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "ssm-public-subnet"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "newendpoint/sandbox/ssm-public-subnetSubnet1/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "newendpoint/sandbox/ssm-public-subnetSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "newendpoint/sandbox/ssm-public-subnetSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "newendpoint/sandbox/ssm-public-subnetSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "sandboxssmpublicsubnetSubnet1RouteTableC71FD578"
+                        },
+                        "subnetId": {
+                          "Ref": "sandboxssmpublicsubnetSubnet1Subnet65F1C172"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "newendpoint/sandbox/ssm-public-subnetSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "sandboxssmpublicsubnetSubnet1RouteTableC71FD578"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "sandboxIGW54877A76"
+                        }
+                      }
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "newendpoint/sandbox/ssm-public-subnetSubnet1/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc"
+                      }
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "newendpoint/sandbox/ssm-public-subnetSubnet1/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "sandboxssmpublicsubnetSubnet1EIP11E6A10D",
+                            "AllocationId"
+                          ]
+                        },
+                        "subnetId": {
+                          "Ref": "sandboxssmpublicsubnetSubnet1Subnet65F1C172"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "newendpoint/sandbox/ssm-public-subnetSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "ssm-private-subnetSubnet1": {
+                "id": "ssm-private-subnetSubnet1",
+                "path": "newendpoint/sandbox/ssm-private-subnetSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "newendpoint/sandbox/ssm-private-subnetSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "cidrBlock": "10.10.0.64/26",
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "availabilityZone": "eu-west-2a",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "newendpoint/sandbox/ssm-private-subnetSubnet1"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "ssm-private-subnet"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "newendpoint/sandbox/ssm-private-subnetSubnet1/Acl"
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "newendpoint/sandbox/ssm-private-subnetSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "newendpoint/sandbox/ssm-private-subnetSubnet1"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "newendpoint/sandbox/ssm-private-subnetSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "sandboxssmprivatesubnetSubnet1RouteTable2774C5BF"
+                        },
+                        "subnetId": {
+                          "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+                        }
+                      }
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "newendpoint/sandbox/ssm-private-subnetSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "sandboxssmprivatesubnetSubnet1RouteTable2774C5BF"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "sandboxssmpublicsubnetSubnet1NATGateway4F0F8D8C"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "IGW": {
+                "id": "IGW",
+                "path": "newendpoint/sandbox/IGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::InternetGateway",
+                  "aws:cdk:cloudformation:props": {
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "newendpoint/sandbox"
+                      }
+                    ]
+                  }
+                }
+              },
+              "VPCGW": {
+                "id": "VPCGW",
+                "path": "newendpoint/sandbox/VPCGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCGatewayAttachment",
+                  "aws:cdk:cloudformation:props": {
+                    "vpcId": {
+                      "Ref": "sandbox0EE381FB"
+                    },
+                    "internetGatewayId": {
+                      "Ref": "sandboxIGW54877A76"
+                    }
+                  }
+                }
+              },
+              "S3": {
+                "id": "S3",
+                "path": "newendpoint/sandbox/S3",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "newendpoint/sandbox/S3/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".s3"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "routeTableIds": [
+                          {
+                            "Ref": "sandboxssmprivatesubnetSubnet1RouteTable2774C5BF"
+                          }
+                        ],
+                        "vpcEndpointType": "Gateway"
+                      }
+                    }
+                  }
+                }
+              },
+              "E_C2_MESSAGES": {
+                "id": "E_C2_MESSAGES",
+                "path": "newendpoint/sandbox/E_C2_MESSAGES",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "newendpoint/sandbox/E_C2_MESSAGES/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "newendpoint/sandbox/E_C2_MESSAGES/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "newendpoint/sandbox/E_C2_MESSAGES/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "newendpoint/sandbox"
+                              }
+                            ],
+                            "vpcId": {
+                              "Ref": "sandbox0EE381FB"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "newendpoint/sandbox/E_C2_MESSAGES/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ec2messages"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "sandboxEC2MESSAGESSecurityGroup666A45CF",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          {
+                            "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+                          }
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              },
+              "E_C2": {
+                "id": "E_C2",
+                "path": "newendpoint/sandbox/E_C2",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "newendpoint/sandbox/E_C2/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "newendpoint/sandbox/E_C2/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "newendpoint/sandbox/E_C2/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "newendpoint/sandbox"
+                              }
+                            ],
+                            "vpcId": {
+                              "Ref": "sandbox0EE381FB"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "newendpoint/sandbox/E_C2/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ec2"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "sandboxEC2SecurityGroupBB5DF1D8",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          {
+                            "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+                          }
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              },
+              "SSM": {
+                "id": "SSM",
+                "path": "newendpoint/sandbox/SSM",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "newendpoint/sandbox/SSM/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "newendpoint/sandbox/SSM/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "newendpoint/sandbox/SSM/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "newendpoint/sandbox"
+                              }
+                            ],
+                            "vpcId": {
+                              "Ref": "sandbox0EE381FB"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "newendpoint/sandbox/SSM/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ssm"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "sandboxSSMSecurityGroupC841F65C",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          {
+                            "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+                          }
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              },
+              "SSMM": {
+                "id": "SSMM",
+                "path": "newendpoint/sandbox/SSMM",
+                "children": {
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "newendpoint/sandbox/SSMM/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "newendpoint/sandbox/SSMM/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "newendpoint/sandbox/SSMM/SecurityGroup",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "securityGroupIngress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "ipProtocol": "tcp",
+                                "fromPort": 443,
+                                "toPort": 443,
+                                "description": "from 0.0.0.0/0:443"
+                              }
+                            ],
+                            "tags": [
+                              {
+                                "key": "Name",
+                                "value": "newendpoint/sandbox"
+                              }
+                            ],
+                            "vpcId": {
+                              "Ref": "sandbox0EE381FB"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "newendpoint/sandbox/SSMM/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                      "aws:cdk:cloudformation:props": {
+                        "serviceName": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "com.amazonaws.",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              ".ssmmessages"
+                            ]
+                          ]
+                        },
+                        "vpcId": {
+                          "Ref": "sandbox0EE381FB"
+                        },
+                        "privateDnsEnabled": true,
+                        "securityGroupIds": [
+                          {
+                            "Fn::GetAtt": [
+                              "sandboxSSMMSecurityGroup94224C75",
+                              "GroupId"
+                            ]
+                          }
+                        ],
+                        "subnetIds": [
+                          {
+                            "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+                          }
+                        ],
+                        "vpcEndpointType": "Interface"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patching": {
+        "id": "patching",
+        "path": "patching",
+        "children": {
+          "WindondsMaintwindow": {
+            "id": "WindondsMaintwindow",
+            "path": "patching/WindondsMaintwindow",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::SSM::MaintenanceWindow",
+              "aws:cdk:cloudformation:props": {
+                "allowUnassociatedTargets": true,
+                "cutoff": 1,
+                "duration": 2,
+                "name": "Windows-Maintainance-Window",
+                "schedule": "cron(0/30 * * * ? *)",
+                "description": "Windows Maintainance Window"
+              }
+            }
+          },
+          "LinuxMaintwindow": {
+            "id": "LinuxMaintwindow",
+            "path": "patching/LinuxMaintwindow",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::SSM::MaintenanceWindow",
+              "aws:cdk:cloudformation:props": {
+                "allowUnassociatedTargets": true,
+                "cutoff": 1,
+                "duration": 2,
+                "name": "Linux-Maintainance-Window",
+                "schedule": "cron(0/30 * * * ? *)",
+                "description": "Linux Maintainance Window"
+              }
+            }
+          },
+          "WinMaintTarget": {
+            "id": "WinMaintTarget",
+            "path": "patching/WinMaintTarget",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::SSM::MaintenanceWindowTarget",
+              "aws:cdk:cloudformation:props": {
+                "resourceType": "INSTANCE",
+                "targets": [
+                  {
+                    "key": "tag:Patchgroup",
+                    "values": [
+                      "Windows"
+                    ]
+                  }
+                ],
+                "windowId": {
+                  "Ref": "WindondsMaintwindow"
+                },
+                "name": "Windows-Target"
+              }
+            }
+          },
+          "LinuxMaintTarget": {
+            "id": "LinuxMaintTarget",
+            "path": "patching/LinuxMaintTarget",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::SSM::MaintenanceWindowTarget",
+              "aws:cdk:cloudformation:props": {
+                "resourceType": "INSTANCE",
+                "targets": [
+                  {
+                    "key": "tag:Patchgroup",
+                    "values": [
+                      "Linux"
+                    ]
+                  }
+                ],
+                "windowId": {
+                  "Ref": "LinuxMaintwindow"
+                },
+                "name": "Linux-Target"
+              }
+            }
+          },
+          "WinMaintTask": {
+            "id": "WinMaintTask",
+            "path": "patching/WinMaintTask",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::SSM::MaintenanceWindowTask",
+              "aws:cdk:cloudformation:props": {
+                "maxConcurrency": "2",
+                "maxErrors": "2",
+                "priority": 1,
+                "targets": [
+                  {
+                    "key": "WindowTargetIds",
+                    "values": [
+                      {
+                        "Ref": "WinMaintTarget"
+                      }
+                    ]
+                  }
+                ],
+                "taskArn": "AWS-RunPatchBaseline",
+                "taskType": "RUN_COMMAND",
+                "windowId": {
+                  "Ref": "WindondsMaintwindow"
+                },
+                "name": "Windows-Task",
+                "serviceRoleArn": "arn:aws:iam::847208056990:role/SSM-Pathcing-Role",
+                "taskInvocationParameters": {
+                  "maintenanceWindowRunCommandParameters": {
+                    "outputS3BucketName": "patchingsandbox",
+                    "parameters": {
+                      "Operation": [
+                        "Scan"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "LinuxMaintTask": {
+            "id": "LinuxMaintTask",
+            "path": "patching/LinuxMaintTask",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::SSM::MaintenanceWindowTask",
+              "aws:cdk:cloudformation:props": {
+                "maxConcurrency": "2",
+                "maxErrors": "2",
+                "priority": 1,
+                "targets": [
+                  {
+                    "key": "WindowTargetIds",
+                    "values": [
+                      {
+                        "Ref": "LinuxMaintTarget"
+                      }
+                    ]
+                  }
+                ],
+                "taskArn": "AWS-RunPatchBaseline",
+                "taskType": "RUN_COMMAND",
+                "windowId": {
+                  "Ref": "LinuxMaintwindow"
+                },
+                "name": "Linux-Task",
+                "serviceRoleArn": "arn:aws:iam::847208056990:role/SSM-Pathcing-Role",
+                "taskInvocationParameters": {
+                  "maintenanceWindowRunCommandParameters": {
+                    "outputS3BucketName": "patchingsandbox",
+                    "parameters": {
+                      "Operation": [
+                        "Scan"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "ResponseMessage02": {
+            "id": "ResponseMessage02",
+            "path": "patching/ResponseMessage02"
+          },
+          "ResponseMessage03": {
+            "id": "ResponseMessage03",
+            "path": "patching/ResponseMessage03"
+          }
+        }
+      }
+    }
+  }
+}

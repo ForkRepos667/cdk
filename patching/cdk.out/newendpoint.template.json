@@ -1,0 +1,550 @@
+{
+  "Resources": {
+    "sandbox0EE381FB": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.10.0.0/21",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/Resource"
+      }
+    },
+    "sandboxssmpublicsubnetSubnet1Subnet65F1C172": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.10.0.0/26",
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "AvailabilityZone": "eu-west-2a",
+        "MapPublicIpOnLaunch": true,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox/ssm-public-subnetSubnet1"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "ssm-public-subnet"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-public-subnetSubnet1/Subnet"
+      }
+    },
+    "sandboxssmpublicsubnetSubnet1RouteTableC71FD578": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox/ssm-public-subnetSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-public-subnetSubnet1/RouteTable"
+      }
+    },
+    "sandboxssmpublicsubnetSubnet1RouteTableAssociationEFF468B1": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "sandboxssmpublicsubnetSubnet1RouteTableC71FD578"
+        },
+        "SubnetId": {
+          "Ref": "sandboxssmpublicsubnetSubnet1Subnet65F1C172"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-public-subnetSubnet1/RouteTableAssociation"
+      }
+    },
+    "sandboxssmpublicsubnetSubnet1DefaultRoute6E77FE0A": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "sandboxssmpublicsubnetSubnet1RouteTableC71FD578"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "sandboxIGW54877A76"
+        }
+      },
+      "DependsOn": [
+        "sandboxVPCGW333312B1"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-public-subnetSubnet1/DefaultRoute"
+      }
+    },
+    "sandboxssmpublicsubnetSubnet1EIP11E6A10D": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "Domain": "vpc"
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-public-subnetSubnet1/EIP"
+      }
+    },
+    "sandboxssmpublicsubnetSubnet1NATGateway4F0F8D8C": {
+      "Type": "AWS::EC2::NatGateway",
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt": [
+            "sandboxssmpublicsubnetSubnet1EIP11E6A10D",
+            "AllocationId"
+          ]
+        },
+        "SubnetId": {
+          "Ref": "sandboxssmpublicsubnetSubnet1Subnet65F1C172"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox/ssm-public-subnetSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-public-subnetSubnet1/NATGateway"
+      }
+    },
+    "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.10.0.64/26",
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "AvailabilityZone": "eu-west-2a",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox/ssm-private-subnetSubnet1"
+          },
+          {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "ssm-private-subnet"
+          },
+          {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-private-subnetSubnet1/Subnet"
+      }
+    },
+    "sandboxssmprivatesubnetSubnet1RouteTable2774C5BF": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox/ssm-private-subnetSubnet1"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-private-subnetSubnet1/RouteTable"
+      }
+    },
+    "sandboxssmprivatesubnetSubnet1RouteTableAssociationCB12F5E4": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "sandboxssmprivatesubnetSubnet1RouteTable2774C5BF"
+        },
+        "SubnetId": {
+          "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-private-subnetSubnet1/RouteTableAssociation"
+      }
+    },
+    "sandboxssmprivatesubnetSubnet1DefaultRoute8F7B73CA": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "sandboxssmprivatesubnetSubnet1RouteTable2774C5BF"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": {
+          "Ref": "sandboxssmpublicsubnetSubnet1NATGateway4F0F8D8C"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/ssm-private-subnetSubnet1/DefaultRoute"
+      }
+    },
+    "sandboxIGW54877A76": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/IGW"
+      }
+    },
+    "sandboxVPCGW333312B1": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "InternetGatewayId": {
+          "Ref": "sandboxIGW54877A76"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/VPCGW"
+      }
+    },
+    "sandboxS30FA6469D": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".s3"
+            ]
+          ]
+        },
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "RouteTableIds": [
+          {
+            "Ref": "sandboxssmprivatesubnetSubnet1RouteTable2774C5BF"
+          }
+        ],
+        "VpcEndpointType": "Gateway"
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/S3/Resource"
+      }
+    },
+    "sandboxEC2MESSAGESSecurityGroup666A45CF": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "newendpoint/sandbox/E_C2_MESSAGES/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox"
+          }
+        ],
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/E_C2_MESSAGES/SecurityGroup/Resource"
+      }
+    },
+    "sandboxEC2MESSAGES82DA5DE8": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".ec2messages"
+            ]
+          ]
+        },
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "sandboxEC2MESSAGESSecurityGroup666A45CF",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          {
+            "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+          }
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/E_C2_MESSAGES/Resource"
+      }
+    },
+    "sandboxEC2SecurityGroupBB5DF1D8": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "newendpoint/sandbox/E_C2/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox"
+          }
+        ],
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/E_C2/SecurityGroup/Resource"
+      }
+    },
+    "sandboxEC2E47A1C90": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".ec2"
+            ]
+          ]
+        },
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "sandboxEC2SecurityGroupBB5DF1D8",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          {
+            "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+          }
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/E_C2/Resource"
+      }
+    },
+    "sandboxSSMSecurityGroupC841F65C": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "newendpoint/sandbox/SSM/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox"
+          }
+        ],
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/SSM/SecurityGroup/Resource"
+      }
+    },
+    "sandboxSSM611C7461": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".ssm"
+            ]
+          ]
+        },
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "sandboxSSMSecurityGroupC841F65C",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          {
+            "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+          }
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/SSM/Resource"
+      }
+    },
+    "sandboxSSMMSecurityGroup94224C75": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "newendpoint/sandbox/SSMM/SecurityGroup",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "newendpoint/sandbox"
+          }
+        ],
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/SSMM/SecurityGroup/Resource"
+      }
+    },
+    "sandboxSSMM6762C3A3": {
+      "Type": "AWS::EC2::VPCEndpoint",
+      "Properties": {
+        "ServiceName": {
+          "Fn::Join": [
+            "",
+            [
+              "com.amazonaws.",
+              {
+                "Ref": "AWS::Region"
+              },
+              ".ssmmessages"
+            ]
+          ]
+        },
+        "VpcId": {
+          "Ref": "sandbox0EE381FB"
+        },
+        "PrivateDnsEnabled": true,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "sandboxSSMMSecurityGroup94224C75",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetIds": [
+          {
+            "Ref": "sandboxssmprivatesubnetSubnet1Subnet8D2B63C7"
+          }
+        ],
+        "VpcEndpointType": "Interface"
+      },
+      "Metadata": {
+        "aws:cdk:path": "newendpoint/sandbox/SSMM/Resource"
+      }
+    }
+  }
+}
