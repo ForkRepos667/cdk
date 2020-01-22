@@ -6,17 +6,14 @@ from aws_cdk import (
     core,
 )
 
-
 #s3_Properties
-
 bucket_properties={'bktname':'philbucket2', 'loc':'eu-west-2'}
-iam_role_properties={'':'',}
+
 
 class S3Stack(core.Stack):
 
     def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
-        """
 
             
         #################################################
@@ -28,11 +25,10 @@ class S3Stack(core.Stack):
 
         try:
 
-            
             s3_custom = cfn.CfnCustomResource(self, 
-                                        's3_custom',
-                                        service_token='arn:aws:lambda:eu-west-2:847208056990:function:s3_custom_function',
-                                        )
+                                's3_custom',
+                                service_token='arn:aws:lambda:eu-west-2:847208056990:function:s3_custom_function',
+            )
             
             # Add propertie(s)
             
